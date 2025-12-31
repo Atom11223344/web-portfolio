@@ -91,7 +91,7 @@ export default function ProfilePage() {
 
                 {/* GitHub */}
                 <a 
-                  href="https://github.com/yourgit" 
+                  href="https://github.com/Atom11223344" 
                   target="_blank" 
                   className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors duration-300 group"
                 >
