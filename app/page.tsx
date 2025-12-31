@@ -5,12 +5,12 @@ import { projects } from "@/data/projects";
 export default function Home() {
   return (
     // pt-48 = ดันเนื้อหาลงมา 12rem (ประมาณ 192px) รับรองไม่ชนแน่นอน
-    <main className="min-h-screen bg-black text-white pt-40 px-4 pb-20">
+    <main className="min-h-screen pt-48 px-4 pb-20">
       <div className="max-w-5xl mx-auto">
         
         {/* หัวข้อ Selected Works */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-extrabold uppercase tracking-widest mb-4 text-white">
+          <h1 className="text-5xl font-extrabold uppercase tracking-widest mb-4 text-foreground">
             Selected Works
           </h1>
         </div>

@@ -28,20 +28,39 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
   };
 
   return (
-    <div className="bg-black border border-white/20 p-8 rounded-none w-full max-w-4xl mx-auto mb-16 shadow-2xl">
+    <div className="
+  bg-card text-card-foreground 
+  w-full max-w-4xl mx-auto mb-16 p-8 rounded-xl shadow-lg
+  
+  /* 1. ขอบหนา 2px */
+  border-2
+  
+  /* 2. สีขอบปกติ (เข้มขึ้นตามที่ขอ) */
+  border-zinc-400        /* Light Mode: สีเทาเข้ม */
+  dark:border-zinc-700   /* Dark Mode: สีเทาสว่างขึ้นเห็นชัด */
+
+  /* 3. Animation */
+  transition-all duration-300 
+  
+  /* 4. Hover Effect (เด้ง + เปลี่ยนสีขอบ) */
+  hover:-translate-y-2   /* ขยับขึ้น */
+  hover:shadow-2xl       /* เงาชัดขึ้น */
+  hover:border-black     /* Light Hover: เป็นสีดำเข้ม */
+  dark:hover:border-white /* Dark Hover: เป็นสีขาวจั๊วะ (แก้ปัญหา hover หาย) */
+">
       
       {/* 1. HEADER (Centered) */}
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-bold text-white tracking-widest uppercase mb-2">
+        <h3 className="text-3xl font-bold tracking-widest uppercase mb-2">
           {project.title}
         </h3>
-        <span className="text-xs font-mono text-gray-400 border border-gray-600 px-2 py-1">
+        <span className="text-xs font-mono text-foreground border border-gray-600 px-2 py-1">
           {project.highlight}
         </span>
       </div>
 
       {/* 2. IMAGE CAROUSEL (The Sketch Feature) */}
-      <div className="relative w-full aspect-video bg-gray-900 mb-8 border border-gray-800 group">
+      <div className="relative w-full aspect-video bg-background mb-8 border border-border group">
         {/* รูปภาพ */}
         <div className="relative w-full h-full overflow-hidden">
            {/* กรณีไม่มีรูป หรือรูปหาไม่เจอ จะแสดงพื้นที่สีเทา */}
@@ -52,7 +71,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                className="w-full h-full object-cover transition-all duration-500"
              />
            ) : (
-             <div className="flex items-center justify-center h-full text-gray-600">No Image Available</div>
+             <div className="flex items-center justify-center h-full text-foreground">No Image Available</div>
            )}
         </div>
 
@@ -87,14 +106,14 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
 
       {/* 3. CONTENT & DESCRIPTION (Centered) */}
       <div className="text-center max-w-2xl mx-auto">
-        <p className="text-gray-300 mb-6 leading-relaxed font-light text-lg">
+        <p className="text-foreground mb-6 leading-relaxed font-light text-lg">
           {project.description}
         </p>
         
         {/* Tech Stack Chips */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {project.techStack.map((tech) => (
-            <span key={tech} className="text-sm text-gray-400 border border-gray-700 px-3 py-1 bg-gray-950">
+            <span key={tech} className="text-sm text-foreground border border-border px-3 py-1 bg-card">
               {tech}
             </span>
           ))}
@@ -106,7 +125,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             href={project.link} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-8 py-3 bg-white text-black font-bold hover:bg-gray-300 transition-colors"
+            className="flex items-center gap-2 px-6 py-3 border border-border rounded-lg font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105"
           >
             <ExternalLink size={18} /> Demo App
           </a>
@@ -114,7 +133,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-8 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors"
+            className="flex items-center gap-2 px-6 py-3 border border-border rounded-lg font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105"
           >
             <Github size={18} /> Source Code
           </a>
